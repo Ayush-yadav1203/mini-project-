@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connect with NGOs</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: gray;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .section {
+            background-color: rgba(97, 13, 13, 0.155);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .section h2 {
+            text-align: center;
+            color: black;
+        }
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid black;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: yellow;
+            color: black;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: yellow;
+        }
+        .result {
+            text-align: center;
+            color: #4CAF50;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Connect with NGOs</h1>
+
+    <!-- User Connection Section (Volunteer or Donate) -->
+    <div class="section" id="user-section">
+        <h2>Volunteer or Donate</h2>
+        <form id="userForm">
+            <label for="userName">Your Name:</label>
+            <input type="text" id="userName" name="userName" placeholder="Enter your name" required>
+            
+            <label for="userEmail">Your Email:</label>
+            <input type="email" id="userEmail" name="userEmail" placeholder="Enter your email" required>
+            
+            <label for="userMessage">Message/Request:</label>
+            <textarea id="userMessage" name="userMessage" rows="4" placeholder="Enter your message or request (e.g., volunteering, donations)" required></textarea>
+
+            <button type="submit">Submit</button>
+        </form>
+        <div class="result" id="userResult"></div>
+    </div>
+
+    <!-- NGO Section (Post Information) -->
+    <div class="section" id="ngo-section">
+        <h2>NGO Information</h2>
+        <form id="ngoForm">
+            <label for="ngoName">NGO Name:</label>
+            <input type="text" id="ngoName" name="ngoName" placeholder="Enter NGO name" required>
+
+            <label for="ngoContactEmail">NGO Contact Email:</label>
+            <input type="email" id="ngoContactEmail" name="ngoContactEmail" placeholder="Enter NGO email" required>
+
+            <label for="ngoDescription">NGO Description:</label>
+            <textarea id="ngoDescription" name="ngoDescription" rows="4" placeholder="Describe your NGO and how people can get involved" required></textarea>
+
+            <label for="ngoNeeds">Current Needs:</label>
+            <textarea id="ngoNeeds" name="ngoNeeds" rows="4" placeholder="List any needs (e.g., donations, volunteers, support)" required></textarea>
+
+            <button type="submit">Post NGO Information</button>
+        </form>
+        <div class="result" id="ngoResult"></div>
+    </div>
+</div>
+
+<script>
+    // JavaScript to handle form submissions for user connections
+    document.getElementById('userForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        // Get the values from the user connection form
+        const userName = document.getElementById('userName').value;
+        const userEmail = document.getElementById('userEmail').value;
+        const userMessage = document.getElementById('userMessage').value;
+
+        // Display the result for the user
+        document.getElementById('userResult').innerHTML = `<h3>Thank you, ${userName}! Your request to volunteer/donate has been received. We will contact you at ${userEmail} soon.</h3>`;
+        
+        // Reset the form after submission
+        document.getElementById('userForm').reset();
+    });
+
+    // JavaScript to handle form submissions for NGOs
+    document.getElementById('ngoForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        // Get the values from the NGO form
+        const ngoName = document.getElementById('ngoName').value;
+        const ngoContactEmail = document.getElementById('ngoContactEmail').value;
+        const ngoDescription = document.getElementById('ngoDescription').value;
+        const ngoNeeds = document.getElementById('ngoNeeds').value;
+
+        // Display the result for the NGO
+        document.getElementById('ngoResult').innerHTML = `<h3>Thank you, ${ngoName}! Your NGO information has been posted successfully. We hope to connect with more volunteers and donors soon!</h3>`;
+        
+        // Reset the form after submission
+        document.getElementById('ngoForm').reset();
+    });
+</script>
+
+</body>
+</html>

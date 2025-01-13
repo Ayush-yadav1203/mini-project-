@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Portal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .section {
+            background-color: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .section h2 {
+            text-align: center;
+            color: #333;
+        }
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color:red;
+            color: black;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .result {
+            text-align: center;
+            color: #4CAF50;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Job Portal</h1>
+
+    <!-- Job Seeker Section -->
+    <div class="section" id="job-seeker-section">
+        <h2>Apply for a Job</h2>
+        <form id="jobSeekerForm">
+            <label for="jobName">Job Name:</label>
+            <input type="text" id="jobName" name="jobName" placeholder="Enter job title" required>
+            
+            <label for="seekerName">Your Name:</label>
+            <input type="text" id="seekerName" name="seekerName" placeholder="Enter your name" required>
+
+            <label for="seekerEmail">Your Email:</label>
+            <input type="email" id="seekerEmail" name="seekerEmail" placeholder="Enter your email" required>
+
+            <label for="coverLetter">Cover Letter:</label>
+            <textarea id="coverLetter" name="coverLetter" rows="4" placeholder="Enter your cover letter" required></textarea>
+
+            <button type="submit">Apply Now</button>
+        </form>
+        <div class="result" id="seekerResult"></div>
+    </div>
+
+   
+<script>
+    // JavaScript to handle form submissions
+    document.getElementById('jobSeekerForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        // Get the values from the job seeker form
+        const jobName = document.getElementById('jobName').value;
+        const seekerName = document.getElementById('seekerName').value;
+        
+        const coverLetter = document.getElementById('coverLetter').value;
+
+        // Display the result for the job seeker
+        document.getElementById('seekerResult').innerHTML = `<h3>Thank you, ${seekerName}! Your application for ${jobName} has been received.</h3>`;
+        
+        // Reset the form after submission
+        document.getElementById('jobSeekerForm').reset();
+    });
+
+
+</script>
+
+</body>
+</html>

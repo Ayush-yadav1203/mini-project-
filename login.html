@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login Form with Predefined Username and Password</title>
+
+    <style>
+
+        
+
+        * {
+
+            box-sizing: border-box;
+
+            margin: 0;
+
+            padding: 0;
+
+            font-family: arial, sans-serif;
+
+        }
+
+
+        
+
+        body {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            height: 100vh;
+            background: linear-gradient(135deg, #a8edea, #fed6e3);
+
+        }
+
+
+        .container {
+
+            width: 100%;
+
+            max-width: 400px;
+
+            background: white;
+
+            padding: 2rem;
+
+            border-radius: 8px;
+
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+            text-align: center;
+
+        }
+
+
+        .container h2 {
+
+            color: #333;
+
+            margin-bottom: 1.5rem;
+
+        }
+
+
+        
+        .input-group {
+
+            margin-bottom: 1rem;
+
+            text-align: left;
+
+        }
+
+
+        .input-group label {
+
+            font-weight: bold;
+
+            margin-bottom: 0.3rem;
+
+            display: block;
+
+            color: #555;
+
+        }
+
+
+        .input-group input {
+
+            width: 100%;
+
+            padding: 0.5rem;
+
+            border: 1px solid #ccc;
+
+            border-radius: 4px;
+
+            font-size: 1rem;
+
+        }
+
+
+        
+        .error {
+
+            color: red;
+
+            font-size: 0.9rem;
+
+            margin-top: 0.3rem;
+
+        }
+
+
+        /* CAPTCHA styles */
+
+        .captcha {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            font-weight: bold;
+
+            font-size: 1.2rem;
+
+            margin: 1rem 0;
+
+            border: 1px solid rgb(219, 209, 209);
+
+            padding: 5px;
+
+            border-radius: 5px;
+
+        }
+
+
+        .captcha button {
+
+            background: #cadc0b;
+
+            color: white;
+
+            border: none;
+
+            padding: 0.4rem 0.8rem;
+
+            border-radius: 4px;
+
+            cursor: pointer;
+
+            font-size: 1rem;
+
+        }
+        h1 {
+            font-family: 'fantasy', 'Papyrus';  
+            color: rgb(243, 216, 167); 
+            text-align: center;
+            text-decoration: underline;
+            padding: 10px;  
+            border-radius: 5px;
+        }
+        h1 {
+            font-size: 20px;
+            font-weight: bold;
+
+        }
+
+
+        
+
+        button[type="submit"] {
+
+            background: #dcdf05;
+
+            color: white;
+
+            border: none;
+
+            padding: 0.6rem 1.2rem;
+
+            border-radius: 4px;
+
+            font-size: 1rem;
+
+            cursor: pointer;
+
+            width: 100%;
+
+            margin-top: 1rem;
+
+            font-weight: bold;
+
+        }
+
+
+        button[type="submit"]:hover {
+
+            background: #45a049;
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <form id="loginForm" class="login-form" onsubmit="validateForm(event)">
+            <h1>BHARTIYA SEVA</h1>
+            <h2>Login</h2>
+
+            <div class="input-group">
+
+                <label for="username">Username</label>
+
+                <input type="text" id="username" name="username" required>
+
+                <div class="error" id="username-error"></div>
+
+            </div>
+
+            <div class="input-group">
+
+                <label for="password">Password</label>
+
+                <input type="password" id="password" name="password" required>
+
+                <div class="error" id="password-error"></div>
+
+            </div>
+
+            <div class="captcha">
+
+                <span id="captcha-text"></span>
+
+                <button type="button" onclick="generateCaptcha()">↻</button>
+
+            </div>
+
+            <div class="input-group">
+
+                <label for="captcha-input">Enter CAPTCHA</label>
+
+                <input type="text" id="captcha-input" name="captcha" required>
+
+            </div>
+
+            <button type="submit">Login</button>
+            <div>Not have an account? </div>
+            <a href="registration.html" >Register</a>
+
+        </form>
+
+    </div>
+
+
+    <script>
+
+        const predefinedUsername = "admin"; // Predefined username
+
+        const predefinedPassword = "@123"; // Predefined password
+
+
+        function generateCaptcha() {
+
+            const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+            let captcha = "";
+
+            for (let i = 0; i < 6; i++) {
+
+                captcha += chars.charAt(Math.floor(Math.random() * chars.length));
+
+            }
+
+            document.getElementById("captcha-text").textContent = captcha;
+
+        }
+
+
+        function validateForm(event) {
+
+            event.preventDefault();
+
+            let isValid = true;
+
+
+            // Validate username
+
+            const username = document.getElementById("username").value;
+
+            const usernameError = document.getElementById("username-error");
+
+
+            if (username !== predefinedUsername) {
+
+                usernameError.textContent = "Incorrect username. Please try again.";
+
+                isValid = false;
+
+            } else {
+
+                usernameError.textContent = "";
+
+            }
+
+
+            // Validate password
+
+            const password = document.getElementById("password").value;
+
+            const passwordError = document.getElementById("password-error");
+
+
+            if (password !== predefinedPassword) {
+
+                passwordError.textContent = "Incorrect password. Please try again.";
+
+                isValid = false;
+
+            } else {
+
+                passwordError.textContent = "";
+
+            }
+
+
+            // Validate CAPTCHA
+
+            const captchaText = document.getElementById("captcha-text").textContent;
+
+            const captchaInput = document.getElementById("captcha-input").value;
+
+
+            if (captchaText !== captchaInput) {
+
+                alert("Incorrect CAPTCHA. Please try again.");
+
+                generateCaptcha();
+
+                document.getElementById("captcha-input").value = "";
+
+                isValid = false;
+
+            }
+
+
+            // If all validations pass
+
+            if (isValid) {
+
+                alert("Login successful!");
+                window.location.href = "home.html";
+
+                // Add your login success logic here
+
+            }
+            
+
+
+        }
+
+
+        // Generate a CAPTCHA when the page loads
+
+        window.onload = generateCaptcha;
+
+    </script>
+   
+
+</body>
+
+</html>

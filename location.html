@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Location Input</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            padding: 20px;
+        }
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .result {
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Enter Your Location</h2>
+    <form id="locationForm">
+        <label for="location">Location (e.g., City):</label>
+        <input type="text" id="location" name="location" placeholder="Enter location" required>
+        <button type="submit">Submit</button>
+    </form>
+    <div class="result" id="result"></div>
+</div>
+
+<script>
+    
+    document.getElementById('locationForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        const location = document.getElementById('location').value;
+        
+     
+        document.getElementById('result').innerHTML = `<h3>You entered: ${location}</h3>`;
+        async function fetchData() {
+            const apiUrl =' https://api.countrystatecity.in/v1/countries';
+            
+            try {
+              const response = await fetch(apiUrl);
+              
+              if (!response.ok) {
+                throw new Error('Network response was not ok ' + response.statusText);
+              }
+              
+              const data = await response.json();
+              console.log(data);
+              
+            } catch (error) {
+              console.error('There has been a problem with your fetch operation:', error);
+            }
+          }
+          
+          // Call the function
+          fetchData();
+        
+
+    });
+</script>
+
+</body>
+</html>

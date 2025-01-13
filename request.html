@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Portal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .section {
+            background-color: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .section h2 {
+            text-align: center;
+            color: #333;
+        }
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: red;
+            color: black;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .result {
+            text-align: center;
+            color: #4CAF50;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+
+
+   
+    <!-- Employer Section -->
+    <div class="section" id="employer-section">
+        <h2>Post a Job Request</h2>
+        <form id="employerForm">
+            <label for="companyName">Company Name:</label>
+            <input type="text" id="companyName" name="companyName" placeholder="Enter your company name" required>
+
+            <label for="jobTitle">Job Title:</label>
+            <input type="text" id="jobTitle" name="jobTitle" placeholder="Enter job title" required>
+
+            <label for="jobDescription">Job Description:</label>
+            <textarea id="jobDescription" name="jobDescription" rows="4" placeholder="Enter job description" required></textarea>
+
+            <label for="companyEmail">Company Email:</label>
+            <input type="email" id="companyEmail" name="companyEmail" placeholder="Enter your company email" required>
+
+            <button type="submit">Post Job</button>
+        </form>
+        <div class="result" id="employerResult"></div>
+    </div>
+
+
+<script>
+   
+    document.getElementById('employerForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        // Get the values from the employer form
+        const companyName = document.getElementById('companyName').value;
+        const jobTitle = document.getElementById('jobTitle').value;
+        const jobDescription = document.getElementById('jobDescription').value;
+        const companyEmail = document.getElementById('companyEmail').value;
+
+        // Display the result for the employer
+        document.getElementById('employerResult').innerHTML = `<h3>Thank you, ${companyName}! Your job for ${jobTitle} has been posted.</h3>`;
+        
+        // Reset the form after submission
+        document.getElementById('employerForm').reset();
+    });
+</script>
+
+</body>
+</html>

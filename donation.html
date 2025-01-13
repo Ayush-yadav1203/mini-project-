@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate to NGOs</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .form-section {
+            background-color: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .form-section h2 {
+            color: #333;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: red;
+            color: black;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .result {
+            text-align: center;
+            color: #4CAF50;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Donate to NGOs</h1>
+
+    
+    <div class="form-section">
+        <h2>Make a Donation</h2>
+        <form id="donationForm">
+            <label for="donorName">Your Name:</label>
+            <input type="text" id="donorName" name="donorName" placeholder="Enter your name" required>
+            
+            <label for="donorEmail">Your Email:</label>
+            <input type="email" id="donorEmail" name="donorEmail" placeholder="Enter your email" required>
+            
+            <label for="ngoSelect">Select NGO to Donate:</label>
+            <select id="ngoSelect" name="ngoSelect" required>
+                <option value="" disabled selected>Select an NGO</option>
+                <option value="NGO1">NGO 1 - Helping Children</option>
+                <option value="NGO2">NGO 2 - Environmental Protection</option>
+                <option value="NGO3">NGO 3 - Animal Welfare</option>
+                <option value="NGO4">NGO 4 - Education Support</option>
+            </select>
+
+            <label for="donationAmount">Donation Amount ($):</label>
+            <input type="number" id="donationAmount" name="donationAmount" placeholder="Enter donation amount" required>
+
+            <button type="submit">Donate Now</button>
+        </form>
+        <div class="result" id="donationResult"></div>
+    </div>
+</div>
+
+<script>
+    
+    document.getElementById('donationForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        
+        const donorName = document.getElementById('donorName').value;
+        const donorEmail = document.getElementById('donorEmail').value;
+        const ngoSelect = document.getElementById('ngoSelect').value;
+        const donationAmount = document.getElementById('donationAmount').value;
+
+        
+        document.getElementById('donationResult').innerHTML = `
+            <h3>Thank you, ${donorName}!</h3>
+            <p>Your donation of $${donationAmount} to ${ngoSelect} has been received.</p>
+            <p>We will send a receipt to ${donorEmail} shortly.</p>
+        `;
+        
+        
+        document.getElementById('donationForm').reset();
+    });
+</script>
+
+</body>
+</html>
