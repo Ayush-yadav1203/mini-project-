@@ -1,6 +1,6 @@
-# BHARTIYA SEVA - NGO Portal
+# Local Labour Need - NGO Portal
 
-BHARTIYA SEVA is a web-based portal designed to connect NGOs, donors, volunteers, job seekers, and employers. The platform aims to fight poverty and inequality by facilitating donations, volunteering, job applications, and research sharing.
+Local Labour Need is a web-based portal designed to connect NGOs, donors, volunteers, job seekers, and employers. The platform aims to fight poverty and inequality by facilitating donations, volunteering, job applications, and research sharing.
 
 ## Features
 
@@ -41,4 +41,4 @@ BHARTIYA SEVA is a web-based portal designed to connect NGOs, donors, volunteers
 
 ---
 
-© 2025 BHARTIYA SEVA. All
+© 2025 Local Labour Need. All
