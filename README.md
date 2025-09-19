@@ -36,7 +36,7 @@ Local Labour Need is a web-based portal designed to connect NGOs, donors, volunt
 
 ## Contact
 
-- Gmail: johnnys@gmail.com
+- Gmail: ayushyadav.1203@gmail
 - Mobile: 98971XXXXX
 
 ---
